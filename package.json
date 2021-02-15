@@ -1,56 +1,39 @@
 {
-  "name": "three-vignette-background",
-  "version": "1.0.3",
-  "description": "a simple ThreeJS vignette background",
+  "name": "npm-starter",
+  "version": "1.0.0",
+  "description": "",
   "main": "index.js",
-  "license": "MIT",
-  "author": {
-    "name": "Matt DesLauriers",
-    "email": "dave.des@gmail.com",
-    "url": "https://github.com/mattdesl"
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "webpack --watch",
+    "start": "webpack serve --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js"
   },
-  "standard": {
-    "globals": [
-      "THREE"
-    ]
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack": "^1.1.1",
+    "css-loader": "^5.0.1",
+    "ejs-compiled-loader": "^3.0.0",
+    "ejs-loader": "^0.5.0",
+    "glsl-blend-soft-light": "^1.0.5",
+    "glsl-film-grain": "^1.0.4",
+    "glslify-loader": "^2.0.0",
+    "html-webpack-plugin": "^4.5.1",
+    "raw-loader": "^4.0.2",
+    "sass": "^1.32.2",
+    "sass-loader": "^10.1.0",
+    "style-loader": "^2.0.0",
+    "webpack": "^5.11.1",
+    "webpack-cli": "^4.3.1",
+    "webpack-dev-server": "^3.11.1",
+    "webpack-merge": "^5.7.3"
   },
   "dependencies": {
-    "glsl-film-grain": "^1.0.2",
-    "glsl-blend-soft-light": "^1.0.5",
-    "glslify": "^4.0.0"
-  },
-  "devDependencies": {
-    "browserify": "^12.0.1",
-    "budo": "^7.0.2",
-    "three": "^0.73.0",
-    "three-orbit-viewer": "^69.3.0",
-    "uglify-js": "^2.6.1"
-  },
-  "scripts": {
-    "test": "node test.js",
-    "build": "browserify demo.js | uglifyjs -cm > bundle.js",
-    "start": "budo demo.js:bundle.js --live"
-  },
-  "keywords": [
-    "three",
-    "js",
-    "vignette",
-    "background",
-    "mesh",
-    "object",
-    "geometry"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/mattdesl/three-vignette-background.git"
-  },
-  "browserify": {
-    "transform": [
-      "glslify"
-    ]
-  },
-  "homepage": "https://github.com/mattdesl/three-vignette-background",
-  "bugs": {
-    "url": "https://github.com/mattdesl/three-vignette-background/issues"
+    "ejs": "^3.1.5",
+    "three": "^0.125.2"
   }
 }

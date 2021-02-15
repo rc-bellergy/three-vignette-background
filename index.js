@@ -1,9 +1,9 @@
-var glslify = require('glslify')
-var vert = glslify(__dirname + '/shader.vert')
-var frag = glslify(__dirname + '/shader.frag')
+import * as THREE from 'three'
+import vert from './shader.vert'
+import frag from './shader.frag'
+import './style.css'
 
-module.exports = createBackground
-function createBackground (opt) {
+export function createBackground (opt) {
   opt = opt || {}
   var geometry = opt.geometry || new THREE.PlaneGeometry(2, 2, 1)
   var material = new THREE.RawShaderMaterial({
@@ -65,7 +65,7 @@ function createBackground (opt) {
     if (typeof opt.scale !== 'undefined') {
       var scale = opt.scale
       if (typeof scale === 'number') {
-        scale = [ scale, scale ]
+        scale = [scale, scale]
       }
       scale = fromArray(scale, THREE.Vector2)
       material.uniforms.scale.value.copy(scale)

@@ -1,34 +1,31 @@
-global.THREE = require('three')
-var createOrbitViewer = require('three-orbit-viewer')(THREE)
-var createBackground = require('./')
+import * as THREE from 'three'
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
+import { createBackground } from './index.js'
 
-var app = createOrbitViewer({
-  clearColor: 'rgb(40, 40, 40)',
-  clearAlpha: 1.0,
-  fov: 55,
-  position: new THREE.Vector3(0, 2, -2)
-})
-
-var background = createBackground()
-app.scene.add(background)
-
-var geometry = new THREE.BoxGeometry(1, 1, 1)
-var material = new THREE.MeshBasicMaterial({
-  color: '#000',
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
+const scene = new THREE.Scene();
+const background = createBackground({ grainScale: 0.0015 })
+const geometry = new THREE.BoxGeometry(1, 1, 1)
+const material = new THREE.MeshBasicMaterial({
+  color: '#999',
   wireframe: true
 })
-var box = new THREE.Mesh(geometry, material)
-app.scene.add(box)
+const box = new THREE.Mesh(geometry, material)
+const camera = new THREE.PerspectiveCamera(55, window.innerWidth / window.innerHeight, 1, 10000);
+const controls = new OrbitControls(camera, renderer.domElement);
 
-app.on('tick', function () {
-  var width = window.innerWidth
-  var height = window.innerHeight
-  background.style({
-    aspect: width / height,
-    aspectCorrection: true,
-    scale: 2.5,
-    offset: [-0.2, 0.25],
-    // ensure even grain scale based on width/height
-    grainScale: 1.5 / Math.min(width, height)
-  })
-})
+scene.add(box)
+scene.add(background)
+camera.position.set(5, 5, 5);
+controls.update();
+
+function animate () {
+  requestAnimationFrame(animate);
+  // required if controls.enableDamping or controls.autoRotate are set to true
+  controls.update();
+  renderer.render(scene, camera);
+}
+
+animate()
