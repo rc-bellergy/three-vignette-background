@@ -8,6 +8,8 @@ I modified it to:
 1. support webpack 5. No need to use `glslify`;
 2. pack it as a module that can be imported using webpack
 
+![](./demo.jpg)
+
 ---
 ## 1. Install
 
