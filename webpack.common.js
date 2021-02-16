@@ -1,28 +1,17 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {
-  entry: {
-    createBackground: './index.js',
-    demo: './demo.js',
-  },
-  plugins: [
-    new HtmlWebpackPlugin({
-      title: 'Demo of createbackground',
-      chunks: ['demo'],
-      filename: 'index.html',
-      template: 'demo.ejs'
-    }),
-  ],
+
   module: {
     rules: [
       {
         test: /\.css$/,
+        exclude: /node_modules/,
         use: ['style-loader', 'css-loader'],
       },
       {
         test: /\.s[ac]ss$/i,
+        exclude: /node_modules/,
         use: ['style-loader', 'css-loader', 'sass-loader'],
       },
       {
@@ -34,17 +23,5 @@ module.exports = {
         ]
       }
     ],
-  },
-  optimization: {
-    runtimeChunk: 'single',
-    splitChunks: {
-      cacheGroups: {
-        vendor: {
-          test: /[\\/]node_modules[\\/]/,
-          name: 'vendors',
-          chunks: 'all',
-        },
-      },
-    },
-  },
+  }
 };

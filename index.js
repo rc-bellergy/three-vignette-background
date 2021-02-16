@@ -1,7 +1,6 @@
 import * as THREE from 'three'
 import vert from './shader.vert'
 import frag from './shader.frag'
-import './style.css'
 
 export function createBackground (opt) {
   opt = opt || {}

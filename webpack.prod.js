@@ -1,16 +1,18 @@
 const path = require('path');
+const nodeExternals = require('webpack-node-externals');
 const { merge } = require('webpack-merge');
 const common = require('./webpack.common.js');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = merge(common, {
   mode: 'production',
-  plugins: [
-    new CleanWebpackPlugin()
-  ],
+  entry: './index.js',
   output: {
-    filename: 'js/[name].bundle.js',
-    path: path.resolve(__dirname, 'dist/'),
-    assetModuleFilename: 'images/[name].[contenthash][ext]',
+    filename: 'noise-background.js',
+    path: path.resolve(__dirname, 'dist'),
+    library: 'NoiseBackground',
+    libraryTarget: "umd"
   },
+  externals: [
+    nodeExternals()
+  ]
 });
