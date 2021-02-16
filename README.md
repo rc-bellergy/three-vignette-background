@@ -32,3 +32,9 @@ Read the source code of demo.js
 ```
 [Read here](https://github.com/mattdesl/three-vignette-background#background--createbackgroundopt)
 for the detail configs.
+
+## NPM install
+  npm i three-vignette-background-esm
+
+  import { createBackground } from 'three-vignette-background-esm/dist/noise-background'
+
